@@ -1,0 +1,22 @@
+clc; clear;
+h = 0.5;
+t = 0:h:20;                 
+syms T                         
+S = 60*(1 - exp(-T/5));        
+s = double(subs(S, T, t));   
+V = diff(S, T);               
+A = diff(V, T);              
+v = double(subs(V, T, t));    
+a = double(subs(A, T, t));     
+fprintf('v = %f\n', char(V));
+fprintf('a = %f\n', char(A));
+fprintf('length(t) = %f , length(v) = %f\n', length(t), length(v));
+v5 = double(subs(V, T, 5));
+fprintf('\n v5 = %.4f\n', v5);
+[vmax, imax] = max(v);
+fprintf('%.4f max v t = %.1f \n', vmax, t(imax));
+v10 = double(subs(V, T, 10));
+a10 = double(subs(A, T, 10));
+fprintf(' t = 10 :  v = %.4f  ,  a = %.4f\n', v10, a10);
+v_grad = gradient(s, h);
+fprintf('\n max diffrence gradient = %.4f\n', max(abs(v - v_grad)));
