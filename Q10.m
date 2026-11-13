@@ -1,0 +1,17 @@
+clc;clear;
+t=0:0.1:5;
+v=3*t.^2 + 2*t;
+M=trapz(t,v);
+disp(trapz(t,v));
+ syms x;
+ f = 3*x^2 + 2*x;
+I=int(f,x,0,5);
+fprintf('%.3f and %.3f',M,I);
+t1=0:0.5:5;
+v1=3*t1.^2 + 2*t1;
+M1=trapz(t1,v1);
+fprintf('\n\n');
+disp(abs(I-M1));
+b=cumtrapz(t,v);
+i=find(b >= max(b)/2,1);
+disp(t(i));

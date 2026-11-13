@@ -1,0 +1,16 @@
+clc;clear;close all;
+a=input('enter a:');
+b=input('enter b:');
+c=input('enter c:');
+d=[a b c];
+disp(roots(d));
+r=sort(roots(d));
+x = r(1)-5:0.01:r(2)+5;
+e=polyval(d,x);
+plot(x,e);
+grid on;
+xlabel('x');
+ylabel('y');
+title('20');
+hold on;
+plot(r,0,'yo',LineWidth=3);

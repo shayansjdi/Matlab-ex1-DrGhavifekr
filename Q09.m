@@ -1,0 +1,22 @@
+clc; clear;
+h = 0.5;
+t = 0:h:20;                 
+syms T                         
+S = 60*(1 - exp(-T/5));        
+s = double(subs(S, T, t));   
+V = diff(S, T);               
+A = diff(V, T);              
+v = double(subs(V, T, t));    
+a = double(subs(A, T, t));     
+fprintf('V(T) = %s\n', char(V));
+fprintf('A(T) = %s\n', char(A));
+fprintf('length(t) = %d , length(v) = %d\n', length(t), length(v));
+v5 = double(subs(V, T, 5));
+fprintf('\nv(5) = %.4f\n', v5);
+[vmax, imax] = max(v);
+fprintf('بیشینه سرعت = %.4f در t = %.1f\n', vmax, t(imax));
+v10 = double(subs(V, T, 10));
+a10 = double(subs(A, T, 10));
+fprintf('در t = 10 :  v = %.4f  ,  a = %.4f\n', v10, a10);
+v_grad = gradient(s, h);
+fprintf('\nبیشترین اختلاف با gradient = %.4f\n', max(abs(v - v_grad)));
