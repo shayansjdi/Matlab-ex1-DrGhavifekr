@@ -13,6 +13,5 @@ fprintf('Min location: row %d, column %d\n',a3,a4);
 b=a(a1,a2);
 a(a1,a2)=a(a3,a4);
 a(a3,a4)=b;
-
 disp(a);
 disp(mean(a));
